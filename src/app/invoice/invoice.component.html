@@ -1,0 +1,160 @@
+<mat-accordion>
+    <mat-expansion-panel disabled expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>Invoice Details</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <div class="col">
+          <div class="col">
+            Search by Name: <input type="text" id="x">
+          </div>
+        </div>
+        <div class="col" style="margin-right: 50px;">
+          <button type="button" class="btn btn-primary" (click)="openModel()">
+            Create Invoice
+          </button>
+        </div>
+      </div>
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header" >
+                <b><h5 class="modal-title">Invoice</h5></b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModel()">
+                  <span aria-hidden="true">&times;</span>
+                </button>   
+            </div>
+            <form [formGroup]="invoiceForm" (ngSubmit)="invoiceSubmitted()">
+              <div class="row" style="padding-top: 5px;">
+                <!-- style="margin-top: 5px; margin-left: 5px;" -->
+                <div class="col-md-6" > 
+                  <!-- <input type="text" class="form-control" id="uniId" formControlName="uniId" placeholder="Enter University Id"> -->
+                    <mat-form-field appearance="fill">
+                      <mat-label>Select university</mat-label>
+                      <mat-select id="uniId" formControlName="uniId">
+                        <mat-option *ngFor="let university of universities" [value]="university.value">
+                          {{university.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- style="margin-top: 5px; margin-bottom: 5px;" -->
+                <div class="col-md-6" >
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Select term</mat-label>
+                    <mat-select id="term" formControlName="term">
+                      <mat-option *ngFor="let university of universities" [value]="university.value">
+                        {{university.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                
+                <div class="row" style="margin-left: 5%; width: 90%;" >
+                  <button type="submit" class="btn btn-primary w-100" style="width: 100%;" id="btnGI" [disabled]="invoiceForm.invalid" >
+                    <mat-accordion>
+                      <mat-expansion-panel  (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Generate Invoice
+                            </mat-panel-title>
+                          </mat-expansion-panel-header>
+                              <br>Amount: {{amt}}         
+                              <button class="btn btn-primary" type="button" style="width: 100%;">
+                                <mat-expansion-panel (opened)="panelOpenState2 = true"
+                                        (closed)="panelOpenState2 = false">
+                                    <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Create Invoice
+                                    </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                        <div class="row">
+                                            <div class="col">
+                                                Invoice Id
+                                            </div>
+                                            <div class="col">
+                                                University Id
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                Semester
+                                            </div>
+                                            <div class="col">
+                                                University Name:
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                Taxes
+                                            </div>
+                                            <div class="col">
+                                                Amount
+                                            </div>
+                                        </div>
+                                </mat-expansion-panel>
+                            </button>
+                        </mat-expansion-panel>
+                        
+                        </mat-accordion>
+                  </button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Container -->
+      <div class="table-container" style="padding-top: 20px;">
+        <table mat-table [dataSource]="dataSource">
+                
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Invoice Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="universityName">
+            <th mat-header-cell *matHeaderCellDef> University Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.universityName}} </td>
+            </ng-container>
+            
+            <!-- Weight Column -->
+            <ng-container matColumnDef="term">
+            <th mat-header-cell *matHeaderCellDef> Term </th>
+            <td mat-cell *matCellDef="let element"> {{element.term}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tax">
+              <th mat-header-cell *matHeaderCellDef> Tax </th>
+              <td mat-cell *matCellDef="let element"> {{element.tax}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="totalAmount">
+                <th mat-header-cell *matHeaderCellDef> Total Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.totalAmount}} </td>
+              </ng-container>
+              
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element"> 
+                <button class="btn" id="btn1" (click)="openModel()"><i class="fa fa-download"></i></button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+  
+  

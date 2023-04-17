@@ -1,0 +1,16 @@
+#btn1 {
+    border: none;
+    color: black;
+    padding: 12px 12px;
+    font-size: 20px;
+}
+
+.modal-dialog {
+    margin: 20vh auto 0px auto
+}
+
+.table-container{
+    padding-top: 20px;
+    margin: 0 auto;
+    max-width: 1348px;
+}

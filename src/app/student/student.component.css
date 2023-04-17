@@ -1,0 +1,21 @@
+.container-fluid{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-dialog {
+    margin: 10vh auto 0px auto
+}
+
+#action {
+    gap: 5px;
+}
+
+#btn1 {
+    border: none;
+    color: black;
+    padding: 12px 12px;
+    font-size: 20px;
+  }

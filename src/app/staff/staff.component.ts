@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 
-export interface PeriodicElement {
+// For table
+export interface staff {
   name: string;
   staffId: number;
   email: string;
@@ -12,7 +11,7 @@ export interface PeriodicElement {
   action: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const staffDetails: staff[] = [
   {staffId: 1, name: 'Yogesh', email:'qwe@gmail.com', position:'Staff', status:'Active', action: 1},
   {staffId: 2, name: 'Aman', email:'abc@gmail.com',  position:'Staff', status:'Inactive', action:2}
 ];
@@ -37,6 +36,13 @@ export class StaffComponent {
     console.log(this.staffForm.value);
   }
 
+  get name(): FormControl {
+    return this.staffForm.get('name') as FormControl;
+  }
+
+  get email(): FormControl {
+    return this.staffForm.get('email') as FormControl;
+  }
   // For modal
   openModel() {
     const modelDiv = document.getElementById('myModal');
@@ -52,14 +58,7 @@ export class StaffComponent {
     } 
   }
 
-  get name(): FormControl {
-    return this.staffForm.get('name') as FormControl;
-  }
-
-  get email(): FormControl {
-    return this.staffForm.get('email') as FormControl;
-  }
   // For table
   displayedColumns: string[] = ['staffId', 'name', 'email', 'position', 'status', 'action'];
-  dataSource = ELEMENT_DATA;
+  dataSource = staffDetails;
 }

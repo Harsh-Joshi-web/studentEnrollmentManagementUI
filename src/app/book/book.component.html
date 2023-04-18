@@ -1,70 +1,73 @@
 <mat-accordion>
     <mat-expansion-panel disabled expanded>
-      <mat-expansion-panel-header>
+        <mat-expansion-panel-header>
         <mat-panel-title>
           <h2>Book Details</h2>
         </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="row">
-        <div class="col">
-          <div class="col">
-            Search by Name: <input type="text" id="x">
-          </div>
-        </div>
-        <div class="col" style="margin-right: 50px;">
-          <button type="button" class="btn btn-primary" (click)="openModel()">
-            Add Books
-          </button>
-        </div>
-      </div>
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header" >
-              <b><h5 class="modal-title">Add Books</h5></b>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModel()">
-                <span aria-hidden="true">&times;</span>
-              </button>   
-            </div>   
-            <form [formGroup]="bookForm" (ngSubmit)="bookSubmitted()">
-              <div class="row" style="margin: 15px;">
-                <label for="exampleInputEmail1">Book Name</label>
-                <input type="text" class="form-control" id="bName" formControlName="bName" placeholder="Enter book name">
-                <span class="form-text text-danger" *ngIf="bName && bName.invalid && bName.touched">
-                  Book Name is required
-                </span>
-              </div>
-              <div class="row" style="margin: 15px;">
-                <label for="exampleInputEmail1">Book Author</label>
-                <input type="email" class="form-control" id="bAuthor" formControlName="bAuthor" placeholder="Enter book author">
-                <span class="form-text text-danger" *ngIf="bAuthor && bAuthor.invalid && bAuthor.touched">
-                  Book Name is required
-                </span>
-              </div>
-              <div class="row" style="margin: 1px; margin-bottom: 10px;">
-                <div class="col">
-                  <label for="exampleInputPassword1">Price</label>
-                  <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter Price"  min="1">
-                  <span class="form-text text-danger" *ngIf="price && price.invalid && price.touched">
-                    Required and should be positive
-                  </span>
-                </div>
-                <div class="col">
-                  <label for="exampleInputEmail1">Course</label>
-                  <input type="text" class="form-control" id="course" formControlName="course" placeholder="Enter Course">
-                  <span class="form-text text-danger" *ngIf="course && course.invalid && course.touched">
-                    Course is required
-                  </span>
-                </div>
-              </div>
-              <div class="row" style="margin-left: 42%; margin-bottom: 10px;">
-                <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid" (click)="CloseModel()">Submit</button>
-              </div>  
-            </form>
+        </mat-expansion-panel-header>
+        <div class="row">
+            <div class="col">
+            <div class="col">
+                Search by Name: <input type="text" id="x">
+            </div>
+            </div>
+            <div class="col" style="margin-right: 50px;">
+                <button type="button" class="btn btn-primary" (click)="openModel()">
+                    Add Books
+                </button>
             </div>
         </div>
-      </div>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" >
+                <b><h5 class="modal-title">Add Books</h5></b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="CloseModel()">
+                    <span aria-hidden="true">&times;</span>
+                </button>   
+                </div>   
+                <form [formGroup]="bookForm" (ngSubmit)="bookSubmitted()" method="get">
+                <div class="row" style="margin: 15px;">
+                    <label for="exampleInputEmail1">Book Name</label>
+                    <input type="text" class="form-control" id="bName" formControlName="bName" placeholder="Enter book name">
+                    <span class="form-text text-danger" *ngIf="bName && bName.invalid && bName.touched">
+                    Book Name is required
+                    </span>
+                </div>
+                <div class="row" style="margin: 15px;">
+                    <label for="exampleInputEmail1">Book Author</label>
+                    <input type="email" class="form-control" id="bAuthor" formControlName="bAuthor" placeholder="Enter book author">
+                    <span class="form-text text-danger" *ngIf="bAuthor && bAuthor.invalid && bAuthor.touched">
+                    Book Name is required
+                    </span>
+                </div>
+                <div class="row" style="margin: 1px; margin-bottom: 10px;">
+                    <div class="col">
+                    <label for="exampleInputPassword1">Price</label>
+                    <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter Price"  min="1">
+                    <span class="form-text text-danger" *ngIf="price && price.invalid && price.touched">
+                        Required and should be positive
+                    </span>
+                    </div>
+                    <div class="col" style="margin-top: 27px;">
+                    <mat-form-field appearance="fill" style="height: 70px; ">
+                        <mat-label>Select course</mat-label>
+                        <mat-select id="course" formControlName="course" style="width: 100%;">
+                        <mat-option *ngFor="let course of courses" [value]="course.value">
+                            {{course.viewValue}}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 42%; margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid" (click)="CloseModel()">Submit</button>
+                </div>  
+                </form>
+                </div>
+            </div>
+        </div>
 
       <div class="table-container" style="padding-top: 20px;">
         <table mat-table [dataSource]="dataSource">

@@ -1,7 +1,6 @@
 table {
     width: 100%;
-  }
-
+}
 
 .table-container{
   padding-top: 20px;
@@ -17,7 +16,11 @@ table {
 }
 
 .modal-dialog {
-  margin: 20vh auto 0px auto
+  margin: 20vh auto 0px auto;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 0.3rem;
+  outline: 0;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 
 #btn1 {

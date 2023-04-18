@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 //For table
-export interface PeriodicElement {
+export interface students {
   stuId: number;
   name: string;
   address: string;
@@ -13,7 +13,24 @@ export interface PeriodicElement {
   action: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+// Form fields
+interface University {
+  value: number;
+  viewValue: string;
+}
+
+interface Term {
+  value: number;
+  viewValue: string;
+}
+
+interface Course {
+  value: string;
+  viewValue: string;
+}
+
+//For table
+const studentDetails: students[] = [
   {stuId: 1, name: 'Rameshwar', address:'Indore', email:'ram@gamil.com', university:'Silicon', term:2, course:'BTech', action: 1},
   {stuId: 2, name: 'Piyush', address:'Odisha', email:'piyush@gamil.com', university:'ITDAV', term:8, course:'BA', action: 1},
   {stuId: 3, name: 'Yogesh', address:'Lucknow', email:'harsh@gamil.com', university:'CV Raman', term:6, course:'BE', action: 1},
@@ -28,7 +45,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class StudentComponent{
   // For panel
   panelOpenState1 = true;
-
+  
   // For form
   stuForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -83,7 +100,36 @@ export class StudentComponent{
     } 
   }
 
+  // For form fields
+  terms: Term[] = [
+    {value: 1, viewValue: '1st sem'},
+    {value: 2, viewValue: '2nd sem'},
+    {value: 3, viewValue: '3rd sem'},
+    {value: 4, viewValue: '4th sem'},
+    {value: 5, viewValue: '5th sem'},
+    {value: 6, viewValue: '6th sem'},
+    {value: 7, viewValue: '7th sem'},
+    {value: 8, viewValue: '8th sem'},
+    {value: 9, viewValue: '9th sem'},
+    {value: 10, viewValue: '10th sem'},
+    {value: 11, viewValue: '11th sem'},
+    {value: 12, viewValue: '12th sem'},
+  ];
+
+  courses: Course[] = [
+    {value: 'BTech', viewValue: 'BTech'},
+    {value: 'BCA', viewValue: 'BCA'},
+    {value: 'BA', viewValue: 'BA'},
+  ];
+
+
+  universities: University[] = [
+    {value: 1001, viewValue: 'Solicon'},
+    {value: 1002, viewValue: 'DAVV'},
+    {value: 1003, viewValue: 'HIT'},
+  ];
+
   // For table
   displayedColumns: string[] = ['stuId', 'name', 'address', 'email','university', 'course', 'term', 'action'];
-  dataSource = ELEMENT_DATA;
+  dataSource = studentDetails;
 }

@@ -39,7 +39,6 @@
                             </mat-select>
                           </mat-form-field>
                     </div>
-                    
                     <div class="col" > 
                           <mat-form-field appearance="fill">
                             <mat-label>Select student</mat-label>
@@ -51,9 +50,9 @@
                           </mat-form-field>
                     </div>
                 </div>
-                <div class="row" style="margin-left: 5px;">
+                <div class="row" style="margin-left: 4px; margin-right: 4px;">
                     <div class="col" style="width:50px" > 
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="fill" style="width:100%">
                           <mat-label>Select book</mat-label>
                           <mat-select id="bId" formControlName="bId">
                             <mat-option *ngFor="let book of books" [value]="book.value">

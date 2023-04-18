@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+// For dropdowns
 interface Book {
   value: string;
   viewValue: string;
@@ -16,15 +17,15 @@ interface University {
   viewValue: string;
 }
 
-
-export interface PeriodicElement {
+// For table
+export interface bookAllot {
   uName: string;
   sName: string;
   bName: string;
   action: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const bookAllotDetails: bookAllot[] = [
   {uName: 'Silicon', sName: 'Piyush', bName:'Wings of Fire', action: 1},
   {uName: 'ITDAV', sName: 'Ram', bName: 'Dot Net', action: 2},
   {uName: 'CV Raman', sName: 'Ashutosh', bName: 'Angular', action: 1}
@@ -61,8 +62,9 @@ export class BookAllocationComponent {
   }
   // For table
   displayedColumns: string[] = ['uName', 'sName', 'bName', 'action'];
-  dataSource = ELEMENT_DATA;
+  dataSource = bookAllotDetails;
 
+  // For table
   books: Book[] = [
     {value: '2001', viewValue: 'Engineering Physics'},
     {value: '2002', viewValue: 'Advanced Engineering Mathematics'},

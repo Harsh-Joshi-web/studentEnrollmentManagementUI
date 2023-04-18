@@ -8,6 +8,7 @@ import {LoginService} from './loginServices'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+  isLoggedIn = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit{
 
   loginSubmit() {
     console.log(this.loginForm)
+    this.isLoggedIn = true;
   }
 
   get inputEmail(): FormControl {

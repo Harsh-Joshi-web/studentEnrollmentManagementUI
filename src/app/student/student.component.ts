@@ -10,6 +10,7 @@ export interface students {
   university: string;
   term: number;
   course: string;
+  isDeleted: string;
   action: number;
 }
 
@@ -31,9 +32,9 @@ interface Course {
 
 //For table
 const studentDetails: students[] = [
-  {stuId: 1, name: 'Rameshwar', address:'Indore', email:'ram@gamil.com', university:'Silicon', term:2, course:'BTech', action: 1},
-  {stuId: 2, name: 'Piyush', address:'Odisha', email:'piyush@gamil.com', university:'ITDAV', term:8, course:'BA', action: 1},
-  {stuId: 3, name: 'Yogesh', address:'Lucknow', email:'harsh@gamil.com', university:'CV Raman', term:6, course:'BE', action: 1},
+  {stuId: 1, name: 'Rameshwar', address:'Indore', email:'ram@gamil.com', university:'Silicon', term:2, course:'BTech', isDeleted: 'Yes', action: 1},
+  {stuId: 2, name: 'Piyush', address:'Odisha', email:'piyush@gamil.com', university:'ITDAV', term:8, course:'BA',  isDeleted: 'No', action: 1},
+  {stuId: 3, name: 'Yogesh', address:'Lucknow', email:'harsh@gamil.com', university:'CV Raman', term:6, course:'BE',  isDeleted: 'No', action: 1},
 ];
 
 @Component({
@@ -130,6 +131,6 @@ export class StudentComponent{
   ];
 
   // For table
-  displayedColumns: string[] = ['stuId', 'name', 'address', 'email','university', 'course', 'term', 'action'];
+  displayedColumns: string[] = ['stuId', 'name', 'address', 'email','university', 'course', 'term', 'isDeleted', 'action'];
   dataSource = studentDetails;
 }

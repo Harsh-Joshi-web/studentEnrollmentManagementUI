@@ -5,6 +5,7 @@ export interface PeriodicElement {
   id: number;
   universityName: string;
   term: number;
+  bookQuantity: number;
   tax: number;
   totalAmount: number;
   action: number;
@@ -20,9 +21,9 @@ interface Term {
   viewValue: string;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1001, universityName: 'Solicon', term:8, tax:10, totalAmount:1870, action: 1},
-  {id: 1002, universityName: 'DAVV', term: 7, tax:1, totalAmount:1717, action: 2},
-  {id: 1003, universityName: 'HIT', term: 8, tax:10, totalAmount:1870, action: 1}
+  {id: 1001, universityName: 'Solicon', term:8, bookQuantity:6, tax:10, totalAmount:1870, action: 1},
+  {id: 1002, universityName: 'DAVV', term: 7, bookQuantity:5, tax:1, totalAmount:1717, action: 2},
+  {id: 1003, universityName: 'HIT', term: 8, bookQuantity:8, tax:10, totalAmount:1870, action: 1}
 ];
 
 @Component({
@@ -39,7 +40,7 @@ export class InvoiceComponent {
   totAmt = (this.total + this.taxes);
 
   // For table
-  displayedColumns: string[] = ['id', 'universityName', 'term', 'tax', 'totalAmount', 'action'];
+  displayedColumns: string[] = ['id', 'universityName', 'term', 'bookQuantity', 'tax', 'totalAmount', 'action'];
   dataSource = ELEMENT_DATA;
 
   // For Form

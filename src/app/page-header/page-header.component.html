@@ -1,5 +1,5 @@
 <mat-toolbar color = "primary">      
-    <button class="btn" (click)="menuClicked.emit()"><i class="fa fa-home"></i> Home</button>
+    <button  class="btn" *ngIf="showHead" (click)="menuClicked.emit()"><i class="fa fa-home"></i> Home</button>
 
 
     <h1><b>Student Enrollment Management</b></h1> 
@@ -8,7 +8,7 @@
         <span>
 
         </span>
-        <button class="btn" routerLink="/login"><i class="fa fa-sign-in"></i> Login</button>
+        <button  class="btn" *ngIf="showHead" routerLink="/login"><i class="fa fa-sign-in"></i> Log Out</button>
     </div>
     <!-- <mat-menu #userMenu="matMenu">
         <button mat-menu-item routerLink="/login">

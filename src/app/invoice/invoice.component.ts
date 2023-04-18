@@ -68,13 +68,6 @@ export class InvoiceComponent {
     } 
   }
 
-  openModel2() {
-    const modelDiv = document.getElementById('myModal2');
-    if(modelDiv!= null) {
-      modelDiv.style.display = 'block';
-    } 
-  }
-
   CloseModel2() {
     const modelDiv = document.getElementById('myModal2');
     if(modelDiv!= null) {
@@ -116,4 +109,8 @@ export class InvoiceComponent {
     {value: 11, viewValue: '11th sem'},
     {value: 12, viewValue: '12th sem'},
   ];
+
+  isPanelOpen = false;
+
+
 }

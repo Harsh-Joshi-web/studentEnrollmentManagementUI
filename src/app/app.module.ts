@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { PageFooterComponent } from './page-footer/page-footer.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
@@ -26,10 +28,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
-import { DialogComponent } from './dialog/dialog.component';
-import { CheckDComponent } from './check-d/check-d.component';
 import { BookComponent } from './book/book.component';
 import { BookAllocationComponent } from './book-allocation/book-allocation.component';
+import { RegisterComponent } from './register/register.component';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -42,10 +44,9 @@ import { BookAllocationComponent } from './book-allocation/book-allocation.compo
     UniversityComponent,
     StudentComponent,
     InvoiceComponent,
-    DialogComponent,
-    CheckDComponent,
     BookComponent,
     BookAllocationComponent,
+    RegisterComponent,
 
   ],
   imports: [
@@ -65,9 +66,10 @@ import { BookAllocationComponent } from './book-allocation/book-allocation.compo
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-
+    MatSortModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [StaffComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

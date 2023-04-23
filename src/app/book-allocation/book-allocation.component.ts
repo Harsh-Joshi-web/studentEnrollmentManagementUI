@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MatTableDataSource} from '@angular/material/table';
 
 // For dropdowns
 interface Book {
@@ -62,7 +63,7 @@ export class BookAllocationComponent {
   }
   // For table
   displayedColumns: string[] = ['uName', 'sName', 'bName', 'action'];
-  dataSource = bookAllotDetails;
+  dataSource = new MatTableDataSource(bookAllotDetails);
 
   // For table
   books: Book[] = [
@@ -101,4 +102,10 @@ export class BookAllocationComponent {
       modelDiv.style.display = 'none';
     } 
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

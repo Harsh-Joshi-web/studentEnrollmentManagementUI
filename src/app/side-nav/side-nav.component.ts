@@ -32,9 +32,5 @@ export class SideNavComponent {
       title: 'Book Allocation',
       link: 'bookAllocate',
     },
-    {
-      title: 'Check',
-      link: 'checkD',
-    },
   ]
 }

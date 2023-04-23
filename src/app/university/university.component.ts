@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface university {
   id: number;
@@ -58,7 +59,13 @@ export class UniversityComponent{
 
   // For table
   displayedColumns: string[] = ['id', 'name', 'address', 'action'];
-  dataSource = universityDetails;
+  dataSource = new MatTableDataSource(universityDetails);
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+}
 
 }
 

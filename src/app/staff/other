@@ -1,0 +1,41 @@
+showAllStaff:any;
+staffdata:any=[];
+dataSource = new MatTableDataSource<staff>(this.staffdata);
+
+constructor(private staffService: StaffServiceService) {}
+    
+ngOnInit() {
+    this.showAll();
+}
+
+showAll() {
+    this.staffService.showAllStaff().subscribe((data)=>{
+        console.log("data", data);
+        this.staffdata=data;
+        console.log(this.staffdata);
+        this.dataSource = new MatTableDataSource(this.staffdata);
+        this.dataSource.paginator = this.paginator;
+        this.filteredstaffdata = this.staffdata; // Initialize filteredstaffdata with all staff data
+    });
+}
+
+// Filter
+private _listFilter = '';
+get listFilter(): string {
+    return this._listFilter;
+}
+
+set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredstaffdata = this.performFilter(value);
+}
+
+
+filteredstaffdata: staff[] = []; // Initialize filteredstaffdata with an empty array
+staffdata2: staff[] = [];
+
+performFilter(filterBy: string): staff[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.staffdata.filter((staff: staff) =>
+        staff.name.toLocaleLowerCase().includes(filterBy));
+}

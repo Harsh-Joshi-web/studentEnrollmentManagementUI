@@ -6,10 +6,9 @@ import { StaffComponent } from './staff/staff.component';
 import { UniversityComponent } from './university/university.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { StudentComponent } from './student/student.component';
-import { DialogComponent } from './dialog/dialog.component';
-import { CheckDComponent } from './check-d/check-d.component';
 import { BookComponent } from './book/book.component';
 import { BookAllocationComponent } from './book-allocation/book-allocation.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent}, 
@@ -21,8 +20,8 @@ const routes: Routes = [
   {path:'invoice', component:InvoiceComponent},
   {path:'book', component:BookComponent},
   {path:'bookAllocate', component:BookAllocationComponent},
-  {path:'dialog', component:DialogComponent},
-  {path:'checkD', component:CheckDComponent},
+  {path:'register', component:RegisterComponent},
+  {path:'login/register', component:RegisterComponent}
 ];
 
 @NgModule({

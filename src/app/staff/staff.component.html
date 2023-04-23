@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col">
                 <div class="col">
-                    Search by Name: <input type="text" id="x">
+                    <!-- <input [(ngModel)]='listFilter'> -->
+                    <input matInput placeholder="Enter Name" autocomplete="off" (keyup)="filterData($event)">
                 </div>
             </div>
             <div class="col" style="display: flex; flex-direction: right;">
@@ -51,14 +52,15 @@
         </div>
         <!-- Table  -->
         <div style="padding-top: 20px;">
-            <table mat-table [dataSource]="dataSource">
+            <!-- *ngFor="let staff of staffdata" -->
+            <table mat-table matSort [dataSource]="dataSource" >
                 <ng-container matColumnDef="staffId">
                     <th mat-header-cell *matHeaderCellDef> Staff Id </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
                 </ng-container>
                 <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    <th mat-header-cell  *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
                 </ng-container>
                 <ng-container matColumnDef="email">
                     <th mat-header-cell *matHeaderCellDef> Email </th>
@@ -66,11 +68,11 @@
                 </ng-container>
                 <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef> Position </th>
-                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.roleId}} </td>
                 </ng-container>
                 <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
                 </ng-container>
                 <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef> Action </th>
@@ -82,6 +84,8 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+            <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[1, 2, 3, 7]" showFirstLastButtons="true">
+            </mat-paginator>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
